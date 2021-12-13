@@ -38,7 +38,7 @@ jobs:
           $WebClient = New-Object System.Net.WebClient ; $WebClient.DownloadFile("ftp://ftp.perforce.com/perforce/$env:codeline/bin.nt${{matrix.arch}}/p4api.net.zip","p4api.net.zip")
           New-Item -Type Directory -Path ${{ github.workspace }}\..\p4 -force
           New-Item -Type Directory -Path ${{ github.workspace }}\..\p4-bin\bin.${{matrix.arch}} -force
-          Move-Item -Path ${{ github.workspace }}\p4api.net.zip -Destination ${{ github.workspace }}\..\p4-bin\bin.${{matrix.arch}}\p4api.net.zip -Force
+          Move-Item -Path ${{ github.workspace }}\p4api.net.zip -Destination ${{ github.workspace }}\..\p4-bin\bin.nt${{matrix.arch}}\p4api.net.zip -Force
           
           echo "RELEASE = 2021 1 TEST-TEST_ONLY ;" > ${{ github.workspace }}\..\p4\Version
           echo "PATCHLEVEL = 9999999 ;" >> ${{ github.workspace }}\..\p4\Version
