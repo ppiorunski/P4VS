@@ -48,7 +48,7 @@ jobs:
           pwd
           dir ..\
           cat ..\p4\Version
-          dir ..\p4-bin\bin.${{ matrix.arch }}
+          dir ..\p4-bin\bin.nt${{ matrix.arch }}
           
           
       - name: Get docker image
