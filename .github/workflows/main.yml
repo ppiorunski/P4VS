@@ -1,4 +1,4 @@
-name: CI
+name: Build P4VS
 
 env:
   codeline:       "r20.2"
@@ -47,6 +47,8 @@ jobs:
           dir
           pwd
           dir ..\
+          cat ..\p4\Version
+          dir ..\p4-bin\bin.${{ matrix.arch }}
           
           
       - name: Get docker image
@@ -54,5 +56,4 @@ jobs:
 
       - name: Build P4VS
         run: |
-          $env:P4DPATH="${{ github.workspace }}"
-          docker run -v ${{ github.workspace }}\..\::c:\build\P4.NET --env arch=${{matrix.arch}} --env Platform="Any CPU" -t $Env:docker c:\build\build.ps1 
+          docker run -v ${{ github.workspace }}\..\:c:\build\P4.NET --env arch=${{matrix.arch}} --env Platform="Any CPU" -t $Env:docker c:\build\build.ps1 
