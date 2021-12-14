@@ -60,8 +60,10 @@ jobs:
           pwd
           dir
           dir ${{ github.workspace }}\..\p4-bin\bin.nt${{ matrix.arch }}
+          move-item -Path ${{ github.workspace }}\..\p4-bin\bin.nt${{ matrix.arch }}\P4VS.vsix -Destination  ${{ github.workspace }}\non-production-P4VS-${{ matrix.arch }}.vsix -Force
+          dir ${{ github.workspace }}\
           
       - uses: actions/upload-artifact@v2
         with:
-          name: non-production-P4VS${{ matrix.phpMinor }}.vsix
-          path: ${{ github.workspace }}\..\p4-bin\bin.nt${{ matrix.arch }}\P4VS.vsix
+          name: non-production-P4VS-${{ matrix.arch }}.vsix
+          path: ${{ github.workspace }}\non-production-P4VS-${{ matrix.arch }}.vsix
