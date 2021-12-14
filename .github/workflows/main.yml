@@ -57,3 +57,11 @@ jobs:
       - name: Build P4VS
         run: |
           docker run -v ${{ github.workspace }}\..\:c:\build\P4.NET --env arch=${{matrix.arch}} --env Platform="Any CPU" -t $Env:docker c:\build\build.ps1 
+          pwd
+          dir
+          dir ${{ github.workspace }}\..\p4-bin\bin.nt${{ matrix.arch }}
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: non-production-P4VS${{ matrix.phpMinor }}.vsix
+          path: ${{ github.workspace }}\..\p4-bin\bin.nt${{ matrix.arch }}\P4VS.vsix
